@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.utils.viewport.FillViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.mygdx.game.MyGdxGame;
 
@@ -25,14 +26,15 @@ public abstract class AbstractScreen implements Screen {
     public AbstractScreen(MyGdxGame game){
         this.game=game;
         createCamera();
-        stage=new Stage(new StretchViewport(MyGdxGame.WIDTH,MyGdxGame.HEIGHT,camera));
+        stage=new Stage(new FillViewport(Gdx.graphics.getWidth(),Gdx.graphics.getHeight(),camera));
+
         spriteBatch=new SpriteBatch();
         Gdx.input.setInputProcessor(stage);
     }
 
     private void createCamera() {
         camera=new OrthographicCamera();
-        camera.setToOrtho(false,MyGdxGame.WIDTH,MyGdxGame.HEIGHT);
+        camera.setToOrtho(false,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         camera.update();
     }
 

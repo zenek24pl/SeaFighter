@@ -1,5 +1,6 @@
 package com.mygdx.game.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.mygdx.game.MyGdxGame;
 
@@ -19,7 +20,8 @@ public class SplashScreen extends AbstractScreen {
     private void init() {
 
         //TODO implement better assets loading when game grows
-        splashImage=new Texture("badlogic.jpg");
+        splashImage=new Texture("splash.jpg");
+
     }
 
     @Override
@@ -27,6 +29,7 @@ public class SplashScreen extends AbstractScreen {
         super.render(delta);
         spriteBatch.begin();
         spriteBatch.draw(splashImage,0,0);
+        spriteBatch.draw(splashImage,0,0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         spriteBatch.end();
     }
 }

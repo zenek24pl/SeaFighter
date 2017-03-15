@@ -13,8 +13,7 @@ public class MyGdxGame extends Game {
 	private final static String GAME_NAME="SeaFighter";
 	public final static int WIDTH=700;
 	public final static int HEIGHT=700;
-//	private final static int X=0;
-//	private final static int Y=0;
+
 
 
 
