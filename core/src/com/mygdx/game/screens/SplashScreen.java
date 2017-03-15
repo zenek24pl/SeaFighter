@@ -2,6 +2,7 @@ package com.mygdx.game.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.utils.Timer;
 import com.mygdx.game.MyGdxGame;
 
 /**
@@ -12,9 +13,19 @@ public class SplashScreen extends AbstractScreen {
 
     private Texture splashImage;
 
-    public SplashScreen(MyGdxGame game){
+    public SplashScreen(final MyGdxGame game){
         super(game);
+
         init();
+        Timer.schedule(new Timer.Task() {
+            @Override
+            public void run() {
+                //TODO
+              System.out.print("Po sekundzie");
+                game.setScreen(new GamePlayScreen(game));
+            }
+        },5);
+
     }
 
     private void init() {

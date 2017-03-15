@@ -12,6 +12,6 @@ public class GamePlayScreen extends AbstractScreen {
         init();
     }
     private void init(){
-        
+
     }
 }
