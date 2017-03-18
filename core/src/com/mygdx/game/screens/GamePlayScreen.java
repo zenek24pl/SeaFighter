@@ -1,5 +1,6 @@
 package com.mygdx.game.screens;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
@@ -32,8 +33,13 @@ public class GamePlayScreen extends AbstractScreen {
     private void initScoreLabel() {
         Label.LabelStyle labelstyle=new Label.LabelStyle();
         labelstyle.font=new BitmapFont();
-        scoreLabel=new Label("123",labelstyle);
-        scoreLabel.setAlignment(Align.bottomLeft);
+        scoreLabel=new Label("",labelstyle);
+        scoreLabel.setFontScale(4);
+        scoreLabel.setWrap(true);
+   //     scoreLabel.setHeight(100);
+       // scoreLabel.setWidth(100);
+        scoreLabel.setPosition(Gdx.graphics.getWidth()-300,Gdx.graphics.getHeight()-100,Align.left);
+       // scoreLabel.setAlignment(Align.topRight);
         stage.addActor(scoreLabel);
     }
 
@@ -72,6 +78,7 @@ public class GamePlayScreen extends AbstractScreen {
     }
 
     private void update() {
+        scoreLabel.setText("Score "+game.getPoints());
         stage.act();
     }
 }
