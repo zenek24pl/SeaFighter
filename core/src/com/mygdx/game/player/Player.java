@@ -18,7 +18,7 @@ public class Player extends Image {
     private final static int STARTING_Y=300;
 
     public Player(){
-        super(new Texture("badlogic.jpg"));
+    //    super(new Texture("badlogic.jpg"));
         this.setOrigin(WIDTH/2,HEIGHT/2);
         this.setSize(WIDTH,HEIGHT);
         this.setPosition(STARTING_X,STARTING_Y);
