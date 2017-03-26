@@ -5,4 +5,43 @@ package com.mygdx.game.board;
  */
 
 public class Board {
+    private int boardSize;
+    private float[][] board;
+
+    public Board() {
+        this.boardSize = 10;
+        this.board = new float[10][10];
+        this.initBoard();
+    }
+    public void initBoard(){
+        int[][] board = new int[10][10];
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+                board[i][j] = 0;
+            }
+        }
+    }
+    public void printBoard(){
+        for(int i=0; i < this.getBoardSize(); i++){
+            for (int j=0; j < this.getBoardSize(); j++)
+                System.out.print(this.getBoard()[j][i]+ " ");
+            System.out.println();
+        }
+    }
+
+    public int getBoardSize() {
+        return boardSize;
+    }
+
+    public void setBoardSize(int boardSize) {
+        this.boardSize = boardSize;
+    }
+
+    public float[][] getBoard() {
+        return board;
+    }
+
+    public void setBoard(float[][] board) {
+        this.board = board;
+    }
 }

@@ -19,7 +19,7 @@ public class GamePlayScreen extends AbstractScreen {
     private Player player;
     private Button playerButton;
     private Label scoreLabel;
-    private Texture board_texture,singleShip,twoPlacesShip,triPlacesShip,fourPlacesShip,vader,choose,logo;
+    private Texture board_texture,singleShip,twoPlacesShip,triPlacesShip,fourPlacesShip,vader,choose,logo,border;
     private static boolean[][] cpuBoard = new boolean[10][10];
     private static boolean[][] playerBoard = new boolean[10][10];
 
@@ -37,9 +37,8 @@ public class GamePlayScreen extends AbstractScreen {
         vader=new Texture("vader.jpg");
        choose=new Texture("wybierz.png");
         logo=new Texture("Logo.png");
+        border=new Texture("6.png");
 
-        initPlayer();
-     //   initPlayerButton();
         initScoreLabel();
         initBoard();
     }
@@ -92,10 +91,6 @@ public class GamePlayScreen extends AbstractScreen {
         });
     }
 
-    private void initPlayer() {
-        player=new Player();
-        stage.addActor(player);
-    }
 
     @Override
     public void render(float delta) {
@@ -118,6 +113,7 @@ public class GamePlayScreen extends AbstractScreen {
         spriteBatch.draw(choose,1400,1000);
         spriteBatch.draw(vader,2000,0);
         spriteBatch.draw(logo,100,Gdx.graphics.getHeight()-180);
+        spriteBatch.draw(border,250,150);
         spriteBatch.end();
     }
 

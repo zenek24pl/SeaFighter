@@ -19,7 +19,7 @@ public abstract class AbstractScreen implements Screen {
     protected MyGdxGame game;
 
     protected Stage stage;
-    private OrthographicCamera camera;
+    protected OrthographicCamera camera;
 
     protected SpriteBatch spriteBatch;
 
@@ -35,7 +35,7 @@ public abstract class AbstractScreen implements Screen {
 
     protected abstract void init();
 
-    private void createCamera() {
+    protected void createCamera() {
         camera=new OrthographicCamera();
         camera.setToOrtho(false,Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
         camera.update();

@@ -22,7 +22,7 @@ public class SplashScreen extends AbstractScreen {
             public void run() {
                 //TODO
               System.out.print("Po sekundzie");
-                game.setScreen(new GamePlayScreen(game));
+                game.setScreen(new MenuScreen(game));
             }
         },5);
 
