@@ -235,6 +235,108 @@ public class Player  {
     }
     public boolean validShip(int i) {
     Ship ship=ships.get(i);
+    if(ship.getDirection()==0){
+        //horizont
+
+        if(ship.getPositionX()+ship.getSize()-1>9)
+            return false;
+        if(ship.getPositionX()+ship.getSize()<=9)
+            if(this.getMyBoard().getBoard()[ship.getPositionY()+ship.getSize()][ship.getPositionY()]!=8)
+                return false;
+        if(ship.getPositionX()-1>=0)
+            if(this.getMyBoard().getBoard()[ship.getPositionX()-1][ship.getPositionY()]!=-8)
+                return false;
+
+        int j=0;
+        int size =ship.getSize();
+        int c=0;
+        int term=0;
+
+        if(ship.getPositionY()-1>=0 && ship.getPositionY()+1>=9){
+            c=-1;
+            term=2;
+        }else if (ship.getPositionY()-1>=0){
+            c=-1;
+            term=0;
+        }else {
+            c=1;
+            term=2;
+        }
+        if (ship.getPositionX()-1>=0){
+            j=-1;
+        }
+        if(ship.getPositionX()+ship.getSize()<=9)
+            size++;
+
+        int back=j;
+        for(;c<term;c+=2){
+            j=back;
+            for (;j<size;j++)
+                if(this.getMyBoard().getBoard()[ship.getPositionX()+j][ship.getPositionY()+c]!=-8)
+                    return false;
+        }
+
+
+
+    }else {
+        if(ship.getPositionY()+ship.getSize()-1>9)
+            return false;
+        if(ship.getPositionY()+ship.getSize()<=9)
+            if(this.getMyBoard().getBoard()[ship.getPositionX()][ship.getPositionY()+ship.getSize()]!=-8)
+                return false;
+        if(ship.getPositionY()-1>=0)
+            if(this.getMyBoard().getBoard()[ship.getPositionX()][ship.getPositionY()-1]!=-8)
+                return false;
+        int j=0;
+        int size=ship.getSize();
+        int c=0;
+        int term=0;
+
+        if(ship.getPositionX()-1>=0 && ship.getPositionX()+1<=9) {
+            c = -1;
+            term = 2;
+        }else if(ship.getPositionX()-1>=0 ){
+            c=-1;
+            term=0;
+        }else {
+            c=1;
+            term=2;
+        }
+        if(ship.getPositionY()-1>=0){
+            j=-1;
+        }
+        int back=j;
+
+        for(;c<term;c+=2){
+            j=back;
+            for(;j<size;j++)
+                if(this.getMyBoard().getBoard()[ship.getPositionX()+c][ship.getPositionY()+j]!=-8)
+                    return false;
+        }
+    }
+    return true;
+    }
+
+    public boolean validBoard(boolean total){
+        for(int i=0;i<ships.size();i++)
+            if(validShip(i)==false)
+                return false;
+        if(total==true)
+            if(ships.size()!=10)
+                return false;
+
+        return true;
+    }
+
+    public boolean checkLost(){
+        for(int i=0;i<ships.size();i++){
+            if(!ships.get(i).isSink()){
+                lost=false;
+                return false;
+            }
+        }
+        lost=true;
+        return true;
     }
 
     public void setMyBoard(Board myBoard) {
