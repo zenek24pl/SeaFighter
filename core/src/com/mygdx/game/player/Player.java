@@ -241,7 +241,7 @@ public class Player  {
         if(ship.getPositionX()+ship.getSize()-1>9)
             return false;
         if(ship.getPositionX()+ship.getSize()<=9)
-            if(this.getMyBoard().getBoard()[ship.getPositionY()+ship.getSize()][ship.getPositionY()]!=8)
+            if(this.getMyBoard().getBoard()[ship.getPositionY()+ship.getSize()][ship.getPositionY()]!=-8)
                 return false;
         if(ship.getPositionX()-1>=0)
             if(this.getMyBoard().getBoard()[ship.getPositionX()-1][ship.getPositionY()]!=-8)

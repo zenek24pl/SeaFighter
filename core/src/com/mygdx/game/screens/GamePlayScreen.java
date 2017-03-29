@@ -19,19 +19,20 @@ import com.mygdx.game.player.Player;
  */
 
 public class GamePlayScreen extends AbstractScreen {
-    private Player player;
-    private Button playerButton;
+
     private Label scoreLabel;
     String nShips;
     OnTouchHandler onTouchHandler;
     MyGdxGame gdxGame;
+    Texture ship;
+    Texture hit;
+    Texture miss;
+    Texture blank;
 
     Viewport viewport;
     Sprite sprite;
 
     private Texture board_texture, singleShip, twoPlacesShip, triPlacesShip, fourPlacesShip, vader, choose, logo, border;
-    private static boolean[][] cpuBoard = new boolean[10][10];
-    private static boolean[][] playerBoard = new boolean[10][10];
 
     public GamePlayScreen(MyGdxGame game) {
         super(game);
@@ -49,7 +50,13 @@ public class GamePlayScreen extends AbstractScreen {
         choose = new Texture("wybierz.png");
         logo = new Texture("Logo.png");
         border = new Texture("6.png");
-
+        ship = new Texture("32.png");
+        hit = new Texture("36tes3t.jpg");
+        miss = new Texture("36test6.jpg");
+        blank = new Texture("30.png");
+        this.game.getPlayer1().generateRandomBoard();
+        onTouchHandler=new OnTouchHandler(Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        onTouchHandler.setScreen(2);
         initScoreLabel();
         initBoard();
     }
@@ -92,12 +99,21 @@ public class GamePlayScreen extends AbstractScreen {
         spriteBatch.begin();
         stage.draw();
         spriteBatch.end();
-        spriteBatch.begin();
+       ;/*
         for (int i = 3; i < 13; i++) {
             for (int j = 2; j < 12; j++) {
-                spriteBatch.draw(board_texture, i * 100, j * 100);
+                spriteBatch.draw (board_texture, i * 100, j * 100);
             }
         }
+        */
+    //    spriteBatch.begin();
+    //    drawTable(game.getPlayer2(),1);
+   //     spriteBatch.end();
+
+        spriteBatch.begin();
+        drawTable(game.getPlayer1(),0.5f);
+        spriteBatch.end();
+        spriteBatch.begin();
         spriteBatch.draw(singleShip, 1500, 800);
         spriteBatch.draw(twoPlacesShip, 1600, 800);
         spriteBatch.draw(triPlacesShip, 1500, 500);
@@ -107,11 +123,56 @@ public class GamePlayScreen extends AbstractScreen {
         spriteBatch.draw(logo, 100, Gdx.graphics.getHeight() - 180);
         spriteBatch.draw(border, 250, 150);
         spriteBatch.end();
+        onTouchHandler.setWidth(Gdx.graphics.getWidth());
+        onTouchHandler.setHeighy(Gdx.graphics.getHeight());
+
+        game.gesture(onTouchHandler);
+        System.out.println("x:"+onTouchHandler.getX()+" y: "+onTouchHandler.getY());
+
+
     }
 
     private void update() {
         scoreLabel.setText("Score " + game.getPoints());
         stage.act();
+    }
+    void drawTable(Player player, float scale)
+    {
+        for (int i = 0; i < 10; i++) {
+            for (int j = 0; j < 10; j++) {
+
+                if (player.getMyBoard().getBoard()[j][i] == 0
+                        || player.getMyBoard().getBoard()[j][i] == 1
+                        || player.getMyBoard().getBoard()[j][i] == 2
+                        || player.getMyBoard().getBoard()[j][i] == 3
+                        || player.getMyBoard().getBoard()[j][i] == 4) {
+
+                    if (scale == 1)
+                        spriteBatch.draw(blank, j * scale, (9 - i) * scale, scale, scale);
+                    else
+                        spriteBatch.draw(ship, j * scale, (9 - i) * scale, scale, scale);
+                    continue;
+                }
+                if (player.getMyBoard().getBoard()[j][i] == 0.5
+                        || player.getMyBoard().getBoard()[j][i] == 1.5
+                        || player.getMyBoard().getBoard()[j][i] == 2.5
+                        || player.getMyBoard().getBoard()[j][i] == 3.5
+                        || player.getMyBoard().getBoard()[j][i] == 4.5) {
+
+                    spriteBatch.draw(hit, j * scale, +(9 - i) * scale, scale, scale);
+                    continue;
+                }
+                if (player.getMyBoard().getBoard()[j][i] == -9) {
+                    spriteBatch.draw(miss, j * scale, (9 - i) * scale, scale, scale);
+                    continue;
+                }
+
+                if (player.getMyBoard().getBoard()[j][i] == -8) {
+                    spriteBatch.draw(blank, j * scale, (9 - i) * scale, scale, scale);
+                    continue;
+                }
+            }
+        }
     }
 
 }
