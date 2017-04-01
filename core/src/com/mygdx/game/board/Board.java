@@ -14,10 +14,10 @@ public class Board {
         this.initBoard();
     }
     public void initBoard(){
-        int[][] board = new int[10][10];
-        for (int i = 0; i < 10; i++) {
-            for (int j = 0; j < 10; j++) {
-                board[i][j] = 0;
+      //  int[][] board = new int[10][10];
+        for (int i = 0; i < boardSize; i++) {
+            for (int j = 0; j < boardSize; j++) {
+                board[i][j] = -8;
             }
         }
     }

@@ -100,18 +100,14 @@ public class GamePlayScreen extends AbstractScreen {
         stage.draw();
         spriteBatch.end();
        ;/*
-        for (int i = 3; i < 13; i++) {
-            for (int j = 2; j < 12; j++) {
-                spriteBatch.draw (board_texture, i * 100, j * 100);
-            }
-        }
+
         */
     //    spriteBatch.begin();
     //    drawTable(game.getPlayer2(),1);
    //     spriteBatch.end();
 
         spriteBatch.begin();
-        drawTable(game.getPlayer1(),0.5f);
+        drawTable(game.getPlayer1(),1f);
         spriteBatch.end();
         spriteBatch.begin();
         spriteBatch.draw(singleShip, 1500, 800);

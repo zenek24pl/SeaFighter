@@ -36,7 +36,7 @@ public class MenuScreen extends AbstractScreen implements InputProcessor {
         newGameBt.addListener(new ClickListener(){
         public boolean touchDown(InputEvent event, float x, float y, int pointer, int button)
         {
-            game.setScreen(new GamePlayScreen(game));
+            game.setScreen(new PutShipScreen(game));
             return true;
         }
         });

@@ -74,7 +74,7 @@ public class Player  {
                 return false;
 
             for (int j=0;j<ship.getSize();j++){
-                if(this.getMyBoard().getBoard()[ship.getPositionX()+j][ship.getPositionY()]!=0)
+                if(this.getMyBoard().getBoard()[ship.getPositionX()+j][ship.getPositionY()]!=-8)
                     return false;
             }
             for (int j=0;j<ship.getSize();j++){
@@ -88,7 +88,7 @@ public class Player  {
             }
             for (int j = 0; j < ship.getSize(); j++)
                 if (this.getMyBoard().getBoard()[ship.getPositionX()][ship
-                        .getPositionY() + j] != 0)
+                        .getPositionY() + j] != -8)
                     return false;
 
             for (int j = 0; j < ship.getSize(); j++)
