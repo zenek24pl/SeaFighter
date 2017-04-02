@@ -8,6 +8,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.scenes.scene2d.utils.DragAndDrop;
 import com.badlogic.gdx.utils.StringBuilder;
 import com.mygdx.game.gesture.OnTouchHandler;
 import com.mygdx.game.player.Player;
@@ -27,7 +28,6 @@ public class MyGdxGame extends Game {
 	private Player player2;
 	private Preferences preferences;
 	Screen menu;
-
 	private boolean paused;
 	public void gesture(OnTouchHandler gestureHandler){
 
