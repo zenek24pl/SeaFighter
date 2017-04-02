@@ -107,9 +107,41 @@ public class PutShipScreen extends AbstractScreen implements InputProcessor {
                         if(direction==0)
                             for(int i=0;i<size;i++){
 
-
                             }
+
         }
+        if(!onTouchHandler.isPan())
+            if(onTouchHandler.getDeltaX()>=0 && onTouchHandler.getDeltaY()>=0){
+                if(tempShipPos>=0 && !onTouchHandler.isBlank() && onTouchHandler.isGrab()){
+
+                    int oldX=tempShip.getPositionX();
+                    int oldY=tempShip.getPositionY();
+
+                    tempShip.setPositionX(onTouchHandler.getDeltaX());
+                    tempShip.setPositionY(onTouchHandler.getDeltaY());
+
+                    player1.getShips().add(tempShipPos,tempShip);
+
+                    onTouchHandler.setX(-1);
+                    onTouchHandler.setY(-1);
+
+                    if(!player1.validShip(tempShipPos) || !player1.fillBoardShip(tempShipPos)){
+
+                        player1.getShips().remove(tempShipPos);
+
+                        tempShip.setPositionX(oldX);
+                        tempShip.setPositionY(oldY);
+
+                        player1.getShips().add(tempShipPos,tempShip);
+
+                        player1.validShip(tempShipPos);
+                        player1.fillBoardShip(tempShipPos);
+                    }
+                    tempShipPos=-1;
+                }
+                onTouchHandler.setGrab(false);
+                onTouchHandler.setBlank(false);
+            }
     }
 
     public void placeShip(){
