@@ -60,7 +60,17 @@ public class Inventory {
 
 		return amount;
 	}
+	public int checkInventor(Item item) {
+		int amount = 0;
 
+		for (Slot slot : slots) {
+			if (slot.getItem() == item) {
+				Array<>=getSlots().addAll();
+			}
+		}
+
+		return amount;
+	}
 	public boolean store(Item item, int amount) {
 		// first check for a slot with the same item type
 		Slot itemSlot = firstSlotWithItem(item);
